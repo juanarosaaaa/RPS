@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new/images">
+        <file>paper_small.svg</file>
+        <file>Paper.svg</file>
+        <file>rock_small.svg</file>
+        <file>Rock.svg</file>
+        <file>scissor_small.svg</file>
+    </qresource>
+</RCC>
