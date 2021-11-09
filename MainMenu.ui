@@ -55,6 +55,9 @@ color: rgb(0, 0, 0);</string>
       <height>431</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/new/images/Scissor.svg);</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -92,6 +95,8 @@ SCISSOR</string>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images/img.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -3,7 +3,13 @@
         <file>paper_small.svg</file>
         <file>Paper.svg</file>
         <file>rock_small.svg</file>
-        <file>Rock.svg</file>
+        <file>Scissor.svg</file>
         <file>scissor_small.svg</file>
+        <file>Hand_Big_Upside.png</file>
+        <file>Hand_Big.png</file>
+        <file>Rock_Big_Upside.png</file>
+        <file>Rock_Big.png</file>
+        <file>Scissor_Big_Upside.png</file>
+        <file>Scissor_Big.png</file>
     </qresource>
 </RCC>
