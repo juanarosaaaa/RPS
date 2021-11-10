@@ -9,24 +9,28 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-
+from PyQt5.QtWidgets import QGridLayout, QWidget, QDesktopWidget
+from screeninfo import get_monitors
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        
+    
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1366, 768)
+        MainWindow.resize(1000, 768)
         MainWindow.setStyleSheet("background-color: rgb(255, 255, 255);")
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
         self.paper_picture_big = QtWidgets.QLabel(self.centralwidget)
-        self.paper_picture_big.setGeometry(QtCore.QRect(530, 10, 331, 411))
+        self.paper_picture_big.setGeometry(QtCore.QRect(380, 20, 281, 331))
         self.paper_picture_big.setStyleSheet("\n"
 "image: url(:/new/images/Paper.svg);")
         self.paper_picture_big.setText("")
         self.paper_picture_big.setPixmap(QtGui.QPixmap("python/Papel (1).svg"))
         self.paper_picture_big.setObjectName("paper_picture_big")
         self.label_play = QtWidgets.QLabel(self.centralwidget)
-        self.label_play.setGeometry(QtCore.QRect(570, 470, 251, 51))
+        self.label_play.setGeometry(QtCore.QRect(390, 460, 251, 51))
         font = QtGui.QFont()
         font.setPointSize(27)
         font.setBold(True)
@@ -36,7 +40,7 @@ class Ui_MainWindow(object):
         self.label_play.setAlignment(QtCore.Qt.AlignCenter)
         self.label_play.setObjectName("label_play")
         self.label_option = QtWidgets.QLabel(self.centralwidget)
-        self.label_option.setGeometry(QtCore.QRect(620, 530, 161, 31))
+        self.label_option.setGeometry(QtCore.QRect(440, 520, 161, 31))
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(False)
@@ -45,7 +49,7 @@ class Ui_MainWindow(object):
         self.label_option.setStyleSheet("color: rgb(28, 28, 28);")
         self.label_option.setObjectName("label_option")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(470, 610, 431, 131))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(300, 610, 431, 131))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.pictureshorizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.pictureshorizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -76,7 +80,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_play.setText(_translate("MainWindow", "LET\'S PLAY!"))
         self.label_option.setText(_translate("MainWindow", "PICK AN OPTION:"))
-
 from images import ResourceImage
 
 
@@ -84,7 +87,14 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+
+    for m in get_monitors():
+      screenHeight = m.height
+      screenWidth = m.width
+
+    MainWindow.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
     ui = Ui_MainWindow()
+    
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
