@@ -132,7 +132,7 @@ image: url(:/new/images/paper_small.svg);</string>
   </widget>
  </widget>
  <resources>
-  <include location="images/img.qrc"/>
+  <include location="../images/img.qrc"/>
  </resources>
  <connections/>
 </ui>
