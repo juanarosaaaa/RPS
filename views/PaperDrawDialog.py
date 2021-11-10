@@ -10,13 +10,20 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from images import ResourceImage
+from screeninfo import get_monitors
+
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1016, 626)
+        Dialog.resize(1000, 626)
+        Dialog.setFixedSize(1000,626)
         self.label_17 = QtWidgets.QLabel(Dialog)
         self.label_17.setGeometry(QtCore.QRect(400, 240, 181, 41))
+        for m in get_monitors():
+          screenHeight = m.height
+          screenWidth = m.width
+        Dialog.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(True)

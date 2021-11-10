@@ -9,20 +9,24 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
-sys.path.append(1,'../images/')
 from images import ResourceImage
+from screeninfo import get_monitors
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.ApplicationModal)
-        MainWindow.resize(1366, 768)
+        MainWindow.resize(1000, 768)
         MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet("background:rgb(81, 81, 81)")
+        for m in get_monitors():
+          screenHeight = m.height
+          screenWidth = m.width
+        MainWindow.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(540, 690, 291, 61))
+        self.pushButton.setGeometry(QtCore.QRect(340, 680, 291, 61))
         font = QtGui.QFont()
         font.setFamily("Sans Serif")
         font.setPointSize(20)
@@ -31,13 +35,14 @@ class Ui_MainWindow(object):
 "color: rgb(0, 0, 0);")
         self.pushButton.setObjectName("pushButton")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(590, 250, 231, 431))
+        self.label.setGeometry(QtCore.QRect(400, 330, 201, 321))
+        self.label.setStyleSheet("image: url(:/new/images/Scissor.svg);")
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("Tesoura (1).svg"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(500, 50, 431, 171))
+        self.label_3.setGeometry(QtCore.QRect(310, 40, 431, 171))
         font = QtGui.QFont()
         font.setFamily("Noto Serif Thin")
         font.setPointSize(35)
