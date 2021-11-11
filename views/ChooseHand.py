@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QGridLayout, QWidget, QDesktopWidget
 from screeninfo import get_monitors
 from images import ResourceImage
-class Ui_MainWindow(object):
+class ChooseHandWindow(object):
     def setupUi(self, MainWindow):  
     
         MainWindow.setObjectName("MainWindow")
@@ -24,6 +24,8 @@ class Ui_MainWindow(object):
             screenWidth = m.width
         MainWindow.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
         MainWindow.setFixedSize(1000,768)
+        
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         
@@ -76,7 +78,7 @@ class Ui_MainWindow(object):
         self.scissor_picture.setObjectName("scissor_picture")
         self.pictureshorizontalLayout.addWidget(self.scissor_picture)
         MainWindow.setCentralWidget(self.centralwidget)
-
+        self.name = "digonng"
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -86,15 +88,4 @@ class Ui_MainWindow(object):
         self.label_play.setText(_translate("MainWindow", "LET\'S PLAY!"))
         self.label_option.setText(_translate("MainWindow", "PICK AN OPTION:"))
 
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-
-    ui = Ui_MainWindow()
-
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+   

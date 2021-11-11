@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from images import ResourceImage
 from screeninfo import get_monitors
-
+from ChooseHand import *
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -23,17 +23,22 @@ class Ui_MainWindow(object):
           screenHeight = m.height
           screenWidth = m.width
         MainWindow.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
+        self.window = MainWindow
+    
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(340, 680, 291, 61))
+        self.startButton = self.pushButton
         font = QtGui.QFont()
         font.setFamily("Sans Serif")
         font.setPointSize(20)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("background:rgb(206, 206, 206);\n"
 "color: rgb(0, 0, 0);")
-        self.pushButton.setObjectName("pushButton")
+        self.startButton.setObjectName("startButton")
+        self.pushButton.clicked.connect(self.openChooseHand)
+     
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(400, 330, 201, 321))
         self.label.setStyleSheet("image: url(:/new/images/Scissor.svg);")
@@ -63,11 +68,19 @@ class Ui_MainWindow(object):
 "/PAPER/\n"
 "SCISSOR"))
 
+    def openChooseHand(self):
+        self.windows2 = QtWidgets.QMainWindow()
+        self.ui = ChooseHandWindow()
+        self.ui.setupUi (self.windows2)
+        self.windows2.show()  
+        self.window.close()
 
 if __name__ == "__main__":
     import sys
+    
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
