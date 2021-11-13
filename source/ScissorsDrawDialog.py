@@ -67,12 +67,3 @@ class Ui_DialogScissorsDraw(object):
         self.pushButton_14.setText(_translate("Dialog", "X"))
 
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
