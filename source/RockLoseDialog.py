@@ -13,7 +13,7 @@ from images import ResourceImage
 from screeninfo import get_monitors
 
 
-class Ui_Dialog(object):
+class Ui_DialogRockLose(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1000, 626)
@@ -69,11 +69,3 @@ class Ui_Dialog(object):
 
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())

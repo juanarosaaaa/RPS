@@ -1,4 +1,4 @@
-import GameStrategy as Parent
+from GameStrategy import Game_Strategy as Parent
 import Paper 
 import Rock
 import RockWinDialog
@@ -21,11 +21,16 @@ class Hand_Rock(Parent):
             __class__:0}
         return self.hand_result.get(self.strategy)    
 
+
     def set_ui_result(self):
+
         self.window = QtWidgets.QMainWindow()
         self.hand_window = {
-            Scissor.Hand_Scissor:RockWinDialog.Ui_DialogRockWin,
-            Paper.Hand_Paper: RockLoseDialog.Ui_DialogRockLose,
-            __class__:RockDrawDialog.Ui_Dialog}
+            Scissor.Hand_Scissor:RockWinDialog.Ui_DialogRockWin(),
+            Paper.Hand_Paper: RockLoseDialog.Ui_DialogRockLose(),
+            __class__:RockDrawDialog.Ui_DialogRockDraw()
+            }
+
         self.ui = self.hand_window.get(self.strategy)
         self.ui.setupUi(self.window)
+        self.window.show()

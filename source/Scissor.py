@@ -1,14 +1,15 @@
-import GameStrategy as Parent
+from GameStrategy import Game_Strategy as Parent
 import Paper 
 import Rock
-import PaperWinDialog
-import PaperLoseDialog
-import PaperDrawDialog
+import ScissorsDrawDialog
+import ScissorsLoseDialog
+import ScissorsWinDialog
 import Scissor
 from PyQt5 import QtCore, QtGui, QtWidgets
 from images import ResourceImage
-class Hand_Scissor(Parent.Game_Strategy):
+class Hand_Scissor(Parent):
     
+
     def play_against(self,handStrategy) :
         self.strategy = handStrategy
 
@@ -21,9 +22,17 @@ class Hand_Scissor(Parent.Game_Strategy):
         }
         return self.hand_result.get(self.strategy)
     
+
+
     def set_ui_result(self):
+
         self.window = QtWidgets.QMainWindow()
-        hand_dialog = {
-            Rock.Hand_Rock: PaperWinDialog.Ui_DialogPaperWin(),
-            Scissor.Hand_Scissor:PaperLoseDialog.Ui_DialogPaperLose(),
-            __class__: PaperDrawDialog.Ui_DialogPaperDraw()}
+        self.hand_window = {
+            Paper.Hand_Paper: ScissorsWinDialog.Ui_DialogScissorsWin(),
+            Rock.Hand_Rock:ScissorsLoseDialog.Ui_DialogScissorLose(),
+            __class__: ScissorsDrawDialog.Ui_DialogScissorsDraw()
+            }
+
+        self.ui = self.hand_window.get(self.strategy)    
+        self.ui.setupUi(self.window)
+        self.window.show()
