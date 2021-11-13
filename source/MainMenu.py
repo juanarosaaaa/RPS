@@ -12,8 +12,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from images import ResourceImage
 from screeninfo import get_monitors
 from ChooseHand import *
+import PaperWinDialog
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.ApplicationModal)
         MainWindow.resize(1000, 768)
@@ -80,7 +83,6 @@ if __name__ == "__main__":
     
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()

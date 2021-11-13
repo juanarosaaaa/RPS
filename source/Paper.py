@@ -11,17 +11,9 @@ import MainMenu as mm
 
 class Hand_Paper(Parent):
 
-
     def play_against(self,handStrategy) :
         self.strategy = handStrategy
-        
-
-        MainWindow = QtWidgets.QMainWindow()
-        ui = mm.Ui_MainWindow()
-        ui.setupUi(MainWindow)
-        MainWindow.show()
-        
-        
+            
 
     def get_score(self):
         self.hand_result = {
@@ -36,7 +28,9 @@ class Hand_Paper(Parent):
         self.hand_window = {
             Rock.Hand_Rock: PaperWinDialog.Ui_DialogPaperWin(),
             Scissor.Hand_Scissor:PaperLoseDialog.Ui_DialogPaperLose(),
-            __class__: PaperDrawDialog.Ui_DialogPaperDraw()}
+            __class__: PaperDrawDialog.Ui_DialogPaperDraw()
+            }
 
         self.ui = self.hand_window.get(self.strategy)
         self.ui.setupUi(self.window)    
+        self.window.show()
