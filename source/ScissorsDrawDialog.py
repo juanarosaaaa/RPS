@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from images import ResourceImage
 from screeninfo import get_monitors
 
-class Ui_Dialog(object):
+class Ui_DialogScissorsDraw(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1000, 626)

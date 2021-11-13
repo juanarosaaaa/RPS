@@ -14,7 +14,7 @@ from screeninfo import get_monitors
 
 
 
-class Ui_Dialog(object):
+class Ui_DialogScissorLose(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1000, 626)
