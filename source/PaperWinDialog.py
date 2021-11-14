@@ -67,11 +67,4 @@ class Ui_DialogPaperWin(object):
         self.pushButton_7.setText(_translate("DialogPaperWin", "X"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    DialogPaperWin = QtWidgets.QDialog()
-    ui = Ui_DialogPaperWin()
-    ui.setupUi(DialogPaperWin)
-    DialogPaperWin.show()
-    sys.exit(app.exec_())
+

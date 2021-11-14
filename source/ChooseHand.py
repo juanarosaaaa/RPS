@@ -16,15 +16,18 @@ from images import ResourceImage
 from AbstractHandStrategy import Abstract_Strategy
 import Rock
 import Scissor
+import Paper
+import Enemy
+from random import randint
+
 
 
 
 class ChooseHandWindow(object):
 
-    
-
     def setupUi(self, MainWindow):  
-        self.strategy = Abstract_Strategy(Scissor.Hand_Scissor)
+        self.enemy = Enemy.Enemy_Hand
+       
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 768)
         MainWindow.setFixedSize(1000,768)
@@ -34,7 +37,7 @@ class ChooseHandWindow(object):
             screenWidth = m.width
         MainWindow.setGeometry((screenWidth/2)-(1000/2),(screenHeight/2)-(768/2),1000,768)
         MainWindow.setFixedSize(1000,768)
-        
+        self.window = MainWindow
         
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -71,16 +74,21 @@ class ChooseHandWindow(object):
         self.pictureshorizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.pictureshorizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.pictureshorizontalLayout.setObjectName("pictureshorizontalLayout")
+
         self.rockButton = QPushButton(self.centralwidget)
         self.rockButton.setObjectName(u"rockButton")
         self.rockButton.setGeometry(QRect(270, 600, 161, 141))
         self.rockButton.setStyleSheet(u"image: url(:/new/images/rock_small.svg);")
+        self.rockButton.clicked.connect(self.rock_button_on_click)
+
+
         self.paperButton = QPushButton(self.centralwidget)
         self.paperButton.setObjectName(u"paperButton")
         self.paperButton.setGeometry(QRect(440, 600, 141, 141))
-        self.paperButton.setStyleSheet(u"\n"
-"\n"
-"image: url(:/new/images/paper_small.svg);")
+        self.paperButton.setStyleSheet(u"image: url(:/new/images/paper_small.svg);")
+        self.paperButton.clicked.connect(self.paper_button_on_click)
+
+
         self.scissorButton = QPushButton(self.centralwidget)
         self.scissorButton.setObjectName(u"scissorButton")
         self.scissorButton.setGeometry(QRect(590, 600, 131, 141))
@@ -94,7 +102,35 @@ class ChooseHandWindow(object):
 
 
     def scissor_button_on_click(self):
-        print(self.strategy.play_against(Rock.Hand_Rock))
+        self.strategy = Abstract_Strategy(self.enemy.create_enemy())
+        self.strategy.play_against(Scissor.Hand_Scissor)
+        print(self.strategy.get_score())
+        self.strategy.set_ui_result()
+        self.window.close()
+
+
+
+    def rock_button_on_click(self):
+        self.strategy = Abstract_Strategy(self.enemy.create_enemy())
+        self.strategy.play_against(Rock.Hand_Rock)
+        print(self.strategy.get_score())
+        self.strategy.set_ui_result()
+        self.window.close()
+       
+
+    def paper_button_on_click(self):
+        self.strategy = Abstract_Strategy(self.enemy.create_enemy())
+        self.strategy.play_against(Paper.Hand_Paper)
+        print(self.strategy.get_score())
+        self.strategy.set_ui_result()
+        self.window.close()
+       
+
+
+
+
+
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
